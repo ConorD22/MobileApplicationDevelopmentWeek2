@@ -2,40 +2,39 @@ import java.util.Scanner;
 
 public class Question9 {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        String enter = "Peter";
+        check(enter);
+    }
 
-        String[] thousands = {"", "M", "MM", "MMM"};
-        String[] hundreds = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
-        String[] tens = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
-        String[] ones = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
-        String answer = "";
+    public static void check(String a){
+        char[] vowels = {'a', 'e', 'i', 'o', 'u'};
+        String lowerCase = a.toLowerCase();
+        boolean result = true;
+        char first = lowerCase.charAt(0);
 
-        System.out.print("Please enter a number to convert it intro roman numerals: ");
 
-        int num = scan.nextInt();
 
-        if(num / 1000 != 0){
-            int check = num / 1000;
-            answer += thousands[check];
-            num = num - (check * 1000);
+        for(int i = 0; i < vowels.length; i++){
+            if(lowerCase.charAt(0) == vowels[i]){
+                result = true;
+                break;
+            }else{
+                result = false;
+            }
         }
 
-        if(num / 100 != 0){
-            int check = num / 100;
-            answer += hundreds[check];
-            num = num - (check * 100);
+        if(result){
+            System.out.println(a + "-ay");
+        }else{
+            String removed = a.replace(a.charAt(0), ' ');
+            System.out.println(removed + "-" + lowerCase.charAt(0) + "ay");
         }
 
-        if(num / 10 != 0){
-            int check = num / 10;
-            answer += tens[check];
-            num = num - (check * 10);
-        }
-
-        answer += ones[num];
 
 
-        System.out.print(answer);
+
+
+
 
     }
 }
