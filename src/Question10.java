@@ -6,26 +6,36 @@ public class Question10 {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter the hexidecimal number you wish to convert: ");
         String hex = scan.nextLine();
-        int length = hex.length();
+        char[] hexArray = hex.toCharArray();
+        reverse(hexArray);
 
-        int base = 1;
-        int decimalValue = 0;
 
-        for(int i = length - 1; i >= 0; i--){
-            if(hex.charAt(i) >= '0' && hex. charAt(i) <= '9'){
-                decimalValue += (hex.charAt(i) - 48) * base; //minus 48 to convert it to actual number rather than ascii
 
-                base = base * 16;
-            }
 
-            else if( hex.charAt(i) >= 'A' && hex.charAt(i) <= 'F'){
-                decimalValue += (hex.charAt(i) - 55) * base; //minus 55 to convert it to actual number rather than ascii
+    }
 
-                base = base * 16;
-            }
+    static void reverse(char[] a){
+        char[]reversed = new char[a.length];
+
+        for(int i = 0; i < reversed.length; i++){
+            reversed[a.length -1 -i] = a[i];
         }
+        converter(reversed);
 
-        System.out.println(decimalValue);
+    }
+
+    static void converter(char[] a){
+
+        int num = 0;
+        int position = 1;
+        for (char c : a) {
+            String current = "";
+            current += c;
+            int digitValue = Integer.parseInt(current, 16);
+            num += digitValue * position;
+            position *= 16;
+        }
+        System.out.print("Converted to decimal: " + num);
 
     }
 }
