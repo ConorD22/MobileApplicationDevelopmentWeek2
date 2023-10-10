@@ -2,8 +2,15 @@ import java.util.Scanner;
 
 public class Question9 {
     public static void main(String[] args) {
-        String enter = "Peter";
-        check(enter);
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter a scentence you want converted to pig latin: ");
+        String enter = scan.nextLine();
+        String[] array = enter.split("\\s+");
+
+        for(String word: array){
+            check(word);
+        }
+
     }
 
     public static void check(String a){
@@ -24,10 +31,10 @@ public class Question9 {
         }
 
         if(result){
-            System.out.println(a + "-ay");
+            System.out.print(a + "ay ");
         }else{
             String removed = a.replace(a.charAt(0), ' ');
-            System.out.println(removed + "-" + lowerCase.charAt(0) + "ay");
+            System.out.print(removed +  lowerCase.charAt(0) + "ay ");
         }
 
 
